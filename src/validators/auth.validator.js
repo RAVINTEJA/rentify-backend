@@ -2,7 +2,6 @@ import { body } from 'express-validator';
 
 
 export const registerValidationRules = () => {
-  console.log(body)
   return [
     body('firstName').notEmpty().withMessage('First name is required'),
     body('lastName').notEmpty().withMessage('Last name is required'),

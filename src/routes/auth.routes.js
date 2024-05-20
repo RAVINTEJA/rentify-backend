@@ -4,9 +4,9 @@ import { registerValidationRules, loginValidationRules } from '../validators/aut
 import { validate } from '../validators/validate.js';
 
 
-const authRouter = Router();
+const authRoutes = Router();
 
-authRouter.post('/register', registerValidationRules(), validate, register);
-authRouter.post('/login', loginValidationRules(), validate, login);
+authRoutes.post('/register', registerValidationRules(), validate, register);
+authRoutes.post('/login', loginValidationRules(), validate, login);
 
-export default authRouter;
+export default authRoutes;
