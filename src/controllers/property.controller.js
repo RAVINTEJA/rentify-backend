@@ -3,8 +3,18 @@ import {
     getPropertiesByOwner,
     updateProperty,
     deleteProperty,
+    getProperties,
+    getPropertyById
 } from "../services/property.service.js";
 
+export const getAllProperties = async (req, res) => {
+    try {
+        const properties = await getProperties();
+        res.status(200).json(properties);
+    } catch (error) {
+        res.status(400).json({ error: (error).message });
+    }
+}
 export const addProperty = async (req, res) => {
     try {
         const property = await createProperty(req.body, req.userId); // Assuming req.userId is set by the authentication middleware
@@ -23,6 +33,14 @@ export const getMyProperties = async (req, res) => {
     }
 };
 
+export const getProperty = async (req, res) => {
+    try {
+        const property = await getPropertyById(Number(req.params.id));
+        res.status(200).json(property);
+    } catch (error) {
+        res.status(400).json({ error: (error).message });
+    }
+};
 
 export const editProperty = async (req, res) => {
     try {

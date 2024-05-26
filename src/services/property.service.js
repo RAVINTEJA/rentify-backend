@@ -1,5 +1,9 @@
 import prisma from '../prisma.js';
 
+export const getProperties = async () => {
+  return await prisma.property.findMany();
+};
+
 export const createProperty = async (propertyData, ownerId) => {
   const { place, area, bedrooms, bathrooms, nearbyHospitals, nearbyColleges, rentPrice, images } = propertyData;
 
@@ -19,6 +23,12 @@ export const createProperty = async (propertyData, ownerId) => {
 
   return property;
 };
+
+export const getPropertyById = async (propertyId) => {
+  return await prisma.property.findUnique({
+    where: { id: propertyId }
+  });
+}
 
 export const getPropertiesByOwner = async (ownerId) => {
   return await prisma.property.findMany({
