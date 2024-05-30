@@ -35,6 +35,7 @@ export const likeProperty = async (userId, propertyId) => {
         propertyId
       }
     });
+
   }
 };
 
