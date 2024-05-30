@@ -25,6 +25,7 @@ export const likeProperty = async (userId, propertyId) => {
       id: existingLike.id
       }
     });
+    return { message: 'Property unliked' };
   }
   
   const like = await prisma.like.create({
