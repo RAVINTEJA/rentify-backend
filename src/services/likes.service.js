@@ -22,8 +22,7 @@ export const likeProperty = async (userId, propertyId) => {
   if (existingLike) {
     await prisma.like.delete({
       where: {
-      userId,
-      propertyId
+      id: existingLike.id
       }
     });
   }
