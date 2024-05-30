@@ -22,20 +22,20 @@ export const likeProperty = async (userId, propertyId) => {
   if (existingLike) {
     await prisma.like.delete({
       where: {
-      id: existingLike.id
+        id: existingLike.id
       }
     });
     return { message: 'Property unliked' };
   }
-  
-  const like = await prisma.like.create({
-    data: {
-      userId,
-      propertyId
-    }
-  });
+  else {
 
-  return like;
+    const like = await prisma.like.create({
+      data: {
+        userId,
+        propertyId
+      }
+    });
+  }
 };
 
 export const unlikeProperty = async (userId, propertyId) => {
