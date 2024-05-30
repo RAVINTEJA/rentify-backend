@@ -1,7 +1,13 @@
 import prisma from '../prisma.js';
 
 export const getProperties = async () => {
-  return await prisma.property.findMany();
+  return await prisma.property.findMany({
+    include: {
+      _count: {
+        select: { likes: true },
+      },
+    },
+  });
 };
 
 export const createProperty = async (propertyData, ownerId) => {
