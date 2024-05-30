@@ -20,7 +20,12 @@ export const likeProperty = async (userId, propertyId) => {
   });
 
   if (existingLike) {
-    throw new Error('Property already liked');
+    await prisma.like.delete({
+      where: {
+      userId,
+      propertyId
+      }
+    });
   }
   
   const like = await prisma.like.create({
