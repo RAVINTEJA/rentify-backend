@@ -2,12 +2,10 @@ import prisma from '../prisma.js';
 import { sendInterestEmail } from '../utils/email.service.js';
 
 export const expressInterest = async (userId, propertyId) => {
-  const existingInterest = await prisma.interest.findUnique({
+  const existingInterest = await prisma.interest.findFirst({
     where: {
-      userId_propertyId: {
-        userId,
-        propertyId
-      }
+      userId,
+      propertyId
     }
   });
 
