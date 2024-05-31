@@ -17,7 +17,7 @@ export const likeProperty = async (userId, propertyId) => {
     }).then(() => {
       console.log("Deleted like");
     });
-    return { message: 'Property unliked' };
+    throw new Error('Property already liked');
   } else {
     prisma.like.create({
       data: {
