@@ -38,7 +38,12 @@ export const getPropertyById = async (propertyId) => {
 
 export const getPropertiesByOwner = async (ownerId) => {
   return await prisma.property.findMany({
-    where: { ownerId }
+    where: { ownerId },
+    include: {
+      _count: {
+        select: { likes: true },
+      },
+    },
   });
 };
 
