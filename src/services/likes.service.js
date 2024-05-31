@@ -10,27 +10,30 @@ export const likeProperty = async (userId, propertyId) => {
   });
 
   if (existingLike) {
-    await prisma.like.delete({
+    prisma.like.delete({
       where: {
         id: existingLike.id
       }
+    }).then(() => {
+      console.log("Deleted like");
     });
     return { message: 'Property unliked' };
-  }
-  else {
-
-    const like = await prisma.like.create({
+  } else {
+    prisma.like.create({
       data: {
         userId,
         propertyId
       }
+    }).then(() => {
+      console.log("Created like");
     });
-
+    return { message: 'Property liked' };
   }
 };
 
+
 export const unlikeProperty = async (userId, propertyId) => {
-  await prisma.like.deleteMany({
+  await prisma.like.delete({
     where: {
       userId,
       propertyId

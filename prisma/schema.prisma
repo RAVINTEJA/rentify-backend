@@ -47,6 +47,8 @@ model Like {
   propertyId Int
   user       User     @relation(fields: [userId], references: [id])
   property   Property @relation(fields: [propertyId], references: [id])
+
+  @@unique([userId, propertyId])
 }
 
 model Interest {
