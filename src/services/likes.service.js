@@ -1,15 +1,5 @@
 import prisma from '../prisma.js';
 
-export const getLikesByProperty = async (propertyId) => {
-  const likes = await prisma.like.findMany({
-    where: {
-      propertyId
-    }
-  });
-
-  return likes;
-}
-
 export const likeProperty = async (userId, propertyId) => {
   // Check if the user has already liked the property
   const existingLike = await prisma.like.findFirst({

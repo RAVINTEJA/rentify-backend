@@ -1,14 +1,5 @@
-import { getLikesByProperty, likeProperty, unlikeProperty } from '../services/likes.service.js';
+import {  likeProperty, unlikeProperty } from '../services/likes.service.js';
 
-export const getLikes = async (req, res) => {
-  try {
-    const likes = await getLikesByProperty(Number(req.params.propertyId));
-    const likesCount = likes.length;
-    res.status(200).json(likesCount);
-  } catch (error) {
-    res.status(400).json({ error: (error).message });
-  }
-}
 
 export const addLike = async (req, res) => {
   try {
